@@ -1,18 +1,18 @@
 #pragma once
 #include <string>
 #include <fstream>
-
-using namespace std;
+#include <functional>
 
 class WAL {
 private:
-    ofstream log_file;
+    std::ofstream log_file;
 
 public:
-    WAL(const string& filename);
+    WAL(const std::string& filename);
     ~WAL();
 
-    void append(const string& key, const string& value);
+    void append(const std::string& key, const std::string& value);
 
-    void recover(const string& filename, function<void(string, string)> callback);
+    void recover(const std::string& filename, 
+                 std::function<void(std::string, std::string)> callback);
 };

@@ -1,3 +1,5 @@
-memtable
 *.o
 *.dSYM
+*.log
+src/memtable/test
+src/memtable/memtable_demo
