@@ -28,6 +28,7 @@ class SkipList {
     void insert(string& key, string& value);
     string get(const string& key);
     void getAll();
+    std::vector<std::pair<std::string, std::string>> getEntries();
     void getByLevel(int level) ;
     int getActiveLevels();
 };

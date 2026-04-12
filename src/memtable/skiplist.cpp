@@ -102,3 +102,13 @@ void SkipList::getByLevel(int level) {
 int SkipList::getActiveLevels() {
     return activeLevels;
 }
+
+vector<pair<string, string>> SkipList::getEntries() {
+    vector<pair<string, string>> res;
+    Node* curr = head;
+    while (curr->nextNode[0] != nullptr) {
+        curr = curr->nextNode[0];
+        res.push_back({curr->key, curr->value});
+    }
+    return res;
+}

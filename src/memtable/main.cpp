@@ -25,5 +25,10 @@ int main() {
     memtable.getAll();
 
     cout << memtable.isFull() << endl;
+
+    vector<pair<string, string>> entries = memtable.getEntries();
+    for(auto entry: entries) {
+        cout << entry.first << " " << entry.second << endl;
+    }
     return 0;
 }

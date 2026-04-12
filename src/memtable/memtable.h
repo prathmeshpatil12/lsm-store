@@ -18,4 +18,6 @@ class Memtable {
     string get(string& key);
     bool isFull();
     void getAll();
+    vector<pair<string, string>> getEntries();
+
 };

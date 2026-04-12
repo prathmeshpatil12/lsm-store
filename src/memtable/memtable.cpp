@@ -27,3 +27,7 @@ bool Memtable::isFull() {
         return false;
     }
 }
+
+vector<pair<string, string>> Memtable::getEntries() {
+    return sl.getEntries();
+}

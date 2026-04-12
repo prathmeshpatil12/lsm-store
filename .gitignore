@@ -3,3 +3,4 @@
 *.log
 src/memtable/test
 src/memtable/memtable_demo
+build/
