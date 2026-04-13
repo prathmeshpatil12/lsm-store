@@ -5,6 +5,7 @@
 
 class WAL {
 private:
+    std::string fileName;
     std::ofstream log_file;
 
 public:
@@ -15,4 +16,6 @@ public:
 
     void recover(const std::string& filename, 
                  std::function<void(std::string, std::string)> callback);
+
+    void clear();
 };

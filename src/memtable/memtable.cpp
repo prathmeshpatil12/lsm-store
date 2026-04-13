@@ -31,3 +31,9 @@ bool Memtable::isFull() {
 vector<pair<string, string>> Memtable::getEntries() {
     return sl.getEntries();
 }
+
+void Memtable::clear() {
+    this->current_size = 0;
+    sl = SkipList();
+    wal.clear();
+}

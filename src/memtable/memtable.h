@@ -19,5 +19,5 @@ class Memtable {
     bool isFull();
     void getAll();
     vector<pair<string, string>> getEntries();
-
+    void clear();
 };

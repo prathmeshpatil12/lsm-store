@@ -5,6 +5,7 @@ using namespace std;
 
 // opens the log file in append mode
 WAL::WAL(const string& filename) {
+    this->fileName = filename;
     log_file.open(filename, ios::app);
     if (!log_file.is_open()) {
         cerr << "Error: could not open WAL file" << endl;
@@ -49,4 +50,11 @@ void WAL::recover(const string& filename, function<void(string, string)> callbac
         count += 1;
     }
     cout << "Recovered " << count << " entries from WAL" << endl;
+}
+
+void WAL::clear() {
+    if (log_file.is_open()) {
+        log_file.close();
+    }
+    log_file.open(this->fileName, std::ios::trunc);
 }
