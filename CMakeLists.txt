@@ -26,3 +26,16 @@ add_executable(bloom_test
     src/bloom/bloom.cpp
     src/bloom/bloom_main.cpp
 )
+
+add_executable(db_test
+    src/memtable/skiplist.cpp
+    src/memtable/memtable.cpp
+    src/wal/wal.cpp
+    src/sstable/sstable.cpp
+    src/bloom/bloom.cpp
+    src/db/db.cpp
+    src/db/db_main.cpp
+)
+
+
+target_compile_options(db_test PRIVATE -std=c++17)
