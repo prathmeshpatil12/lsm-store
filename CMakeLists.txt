@@ -18,6 +18,7 @@ add_executable(sstable_test
     src/memtable/memtable.cpp
     src/sstable/sstable.cpp
     src/sstable/sstable_main.cpp
+    src/bloom/bloom.cpp
 )
 
 # bloom filter test

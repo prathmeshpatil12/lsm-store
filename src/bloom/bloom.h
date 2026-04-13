@@ -11,4 +11,6 @@ class BloomFilter {
     BloomFilter(int size);
     void add(std::string key);
     bool mayContain(std::string key);
+    bool getBit(int index);
+    void setBit(int index, bool value);
 };

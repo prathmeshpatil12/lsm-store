@@ -47,3 +47,11 @@ bool BloomFilter::mayContain(string key) {
     }
     return true;
 }
+
+bool BloomFilter::getBit(int index) {
+    return bitArray[index];
+}
+
+void BloomFilter::setBit(int index, bool value) {
+    bitArray[index] = value;
+}

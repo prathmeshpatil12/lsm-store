@@ -31,9 +31,12 @@ int main() {
     SSTable sst;
     sst.flush("test.bin", entries);
 
-    // 4. read a key back
-    string value = sst.get("test.bin", k3);
-    cout << "Found: " << value << endl;
+    string value1 = sst.get("test.bin", "carrot");
+    cout << "carrot: " << value1 << endl;
+
+    // key that doesn't exist
+    string value2 = sst.get("test.bin", "mango");
+    cout << "mango: " << value2 << endl;
 
     return 0;
 }
