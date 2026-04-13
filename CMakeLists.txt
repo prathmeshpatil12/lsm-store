@@ -3,18 +3,25 @@ project(lsm-store)
 
 set(CMAKE_CXX_STANDARD 17)
 
-# all source files
-add_executable(lsm-store
+# include directories for all targets
+include_directories(
+    src/memtable
+    src/wal
+    src/sstable
+    src/bloom
+)
+
+# sstable test
+add_executable(sstable_test
     src/memtable/skiplist.cpp
-    src/memtable/memtable.cpp
     src/wal/wal.cpp
+    src/memtable/memtable.cpp
     src/sstable/sstable.cpp
     src/sstable/sstable_main.cpp
 )
 
-# include directories so headers can be found
-target_include_directories(lsm-store PRIVATE
-    src/memtable
-    src/wal
-    src/sstable
+# bloom filter test
+add_executable(bloom_test
+    src/bloom/bloom.cpp
+    src/bloom/bloom_main.cpp
 )
