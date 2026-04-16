@@ -33,9 +33,16 @@ add_executable(db_test
     src/wal/wal.cpp
     src/sstable/sstable.cpp
     src/bloom/bloom.cpp
+    src/compaction/compaction.cpp
     src/db/db.cpp
     src/db/db_main.cpp
 )
 
-
-target_compile_options(db_test PRIVATE -std=c++17)
+target_include_directories(db_test PRIVATE
+    src/memtable
+    src/wal
+    src/sstable
+    src/bloom
+    src/compaction
+    src/db
+)

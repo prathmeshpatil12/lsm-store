@@ -7,13 +7,14 @@ using namespace std;
 
 class Memtable {
     private:
-    SkipList sl;
+    SkipList* sl;
     WAL wal;
     size_t current_size;
-    static const size_t MAX_SIZE = 4 * 1024 * 1024;  // 4MB
+    static const size_t MAX_SIZE = 1024;  // 1KB
 
     public:
     Memtable(const string& filename);
+    ~Memtable();
     void put(string& key, string& value);
     string get(string& key);
     bool isFull();

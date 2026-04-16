@@ -93,3 +93,41 @@ string SSTable::get(string filename, string key) {
     }
     return "";
 }
+
+
+vector<pair<string, string>> SSTable::readAll(string fileName) {
+    vector<pair<string,string>> entries;
+
+    ifstream inputFile(fileName, ios::binary);
+    if (!inputFile.is_open()) {
+        cerr << "Error: could not open file " << fileName << endl;
+        return entries;
+    }
+
+    // find where bloom filter starts
+    inputFile.seekg(-sizeof(int), ios::end);
+    int bloom_offset;
+    inputFile.read(reinterpret_cast<char*>(&bloom_offset), sizeof(int));
+
+    // seek back to start, read only data entries
+    inputFile.seekg(0, ios::beg);
+
+    while (inputFile.tellg() < bloom_offset) {
+        int key_len;
+        inputFile.read(reinterpret_cast<char*>(&key_len), sizeof(int));
+        if (inputFile.fail()) break;
+
+        string key(key_len, '\0');
+        inputFile.read(&key[0], key_len);
+
+        int val_len;
+        inputFile.read(reinterpret_cast<char*>(&val_len), sizeof(int));
+
+        string value(val_len, '\0');
+        inputFile.read(&value[0], val_len);
+
+        entries.push_back({key, value});
+    }
+
+    return entries;
+}
